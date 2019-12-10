@@ -1,13 +1,19 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <Home/>
+    <!--路由视图:显示路由组件的-->
+    <router-view />
   </div>
 </template>
 
 <script>
+// 引入组件
+import Home from "./components/Home/Home"
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Home
+  }
 }
 </script>
 

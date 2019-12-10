@@ -1,21 +1,19 @@
+// 引入Vue
 import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-// import routes from './routes'
+// 引入VueRouter
+import VueRouter from 'vue-router'
+// 引入routes 
+import routes from './routes'
+import Home from '@/components/Home/Home'
+// 引入Search
+import Search from '../components/Home/components/Header/Search/Search.vue'
 
-Vue.use(Router)
+// 声明使用的插件
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
 
   //路由模式
-  //mode:'history', //不带#
-
-
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
+  mode:'history', //不带#
+  routes
 })
