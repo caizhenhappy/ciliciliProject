@@ -1,7 +1,9 @@
 <template>
   <div class="OD">
     <header class="OD_header">
-      <ICon into="back" class="back" @click="goBack"/>
+      <div @click="goBack">
+        <ICon into="back" class="back" />
+      </div>
       <p>我的订单</p>
     </header>
 
@@ -19,23 +21,30 @@
         <span>待评价</span>
       </li>
     </ul>
-    <div class="notOrder">
+    <div class="OD_listContainer">
+      <ul>
+        <li class="OD_all">全部</li>
+        <li class="OD_bePaied">待支付</li>
+        <li class="OD_beGot">待收货</li>
+        <li class="OD_BeRated">待评价</li>
+      </ul>
+    </div>
+    <div class="notOrder off">
       <p>暂时还没有相关订单</p>
     </div>
-    
   </div>
 </template>
 
 <script>
 import ICon from '../ICon/ICon'
+import { Swipe, SwipeItem } from 'vant'
 export default {
   name: 'Order',
-  components:{
+  components: {
     ICon
   },
-  methods:{
-    goBack(){
-      console.log(this.$router)
+  methods: {
+    goBack() {
       this.$router.back()
     }
   }
@@ -49,8 +58,11 @@ export default {
   width 100%
   height 100%
   background-color #f5f5f5
+  position relative
+  
   .OD_header
     height 44px
+    width 100%
     line-height 44px
     text-align center
     color #232333
@@ -58,11 +70,13 @@ export default {
     background-color #fff
     position fixed
     top 0
-    p
-      transform translateX(-20px)
+    .back
+      position absolute
+      left 0
+      top 3px
   .OD_type
     width 100%
-    height 44px
+    height 40px
     line-height 44px
     position fixed
     top 46px
@@ -75,7 +89,7 @@ export default {
         margin 0 auto
         text-align center
         display block
-        height 44px
+        height 37px
         width 47px
         &.choose
           border-bottom 3px solid #28BE57
@@ -95,4 +109,17 @@ export default {
       text-align center
       position absolute
       top 280px
+  .OD_listContainer
+    width 100%
+    height 100%
+    overflow hidden
+    background-color red
+    ul
+      width 400%
+      height 100%
+      display flex
+      li
+        width 25%
+        height 100%
+        line-height 100%
 </style>
