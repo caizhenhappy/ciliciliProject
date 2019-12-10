@@ -2,74 +2,45 @@
   <div>
     <div class="goods">
       <div class="menu-wrapper">
-        <ul >
-          <li class="menu-item" v-for="(cate,index) in cates" :key="index">
+        <ul>
+          <li class="menu-item" v-for="(cate,index) in cates" :key="index" @click="foodsList">
             <span class="text bottom-border-1px">{{cate.name}}</span>
           </li>
         </ul>
       </div>
-      <!-- <div class="foods-wrapper">
-        <ul>
-          <li class="food-list-hook">
-            <h1 class="title">商品列表</h1>
-            <ul>
-              <li class="food-item" @click="goFoodDetail">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div> -->
-      <FoodList />
+      <FoodList :products="products"/>
+      <router-view/>
     </div>
   </div>
 </template>
 <script>
 // 引入BScroll
 import BScroll from 'better-scroll'
-import { reqCategory } from '../../api/index'
+import { reqCategory, reqFoodList } from '../../api/index'
+
 // 引入组件
 import FoodList from './FoodList'
 export default {
-  name:'FoodScroll',
-  data(){
-    return{
-      cates:[],
+  name: 'FoodScroll',
+  data() {
+    return {
+      cates: [],
+      products:[]
     }
   },
-  components:{
+  components: {
     FoodList
   },
- async mounted() {
+  async mounted() {
     // 发送异步请求
     // 初始化滑动对象
     this._initBScroll()
-    const leftResult = await reqCategory() 
+    const leftResult = await reqCategory()
     const cates = leftResult.data.cate
     this.cates = cates
+
+     
+   
   },
   methods: {
     //初始化滑动对象
@@ -90,7 +61,12 @@ export default {
       }) */
       // 纵向滑动的时候获取y滑动的值
     },
-    
+    async foodsList(){
+      // 获取相应分类的食物
+    const rightResult = await reqFoodList()
+    const products = rightResult.data.data.cate[0].products
+    this.products = products
+    }
   }
 }
 </script>

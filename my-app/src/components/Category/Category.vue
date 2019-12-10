@@ -1,7 +1,17 @@
 <template>
   <div id="category">
     <van-search placeholder="请输入搜索关键词" v-model="value" />
-    <van-divider />
+    <div class="middle">
+      <div class='recommend'>
+        推荐
+      </div>
+      <div class="like">
+        猜你喜欢
+      </div>
+      <div class="vip">
+        会员特价
+      </div>
+    </div>
     <FoodScroll />
   </div>
 </template>
@@ -57,7 +67,24 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../assets/stylus/mixins.styl'
-.category
+#category
   width 100%
   height 100%
+  .middle
+    display flex
+    justify-content space-around
+    margin 10px
+    .recommend
+      font-size 14px
+      line-height 14px
+      font-weight 700
+      color #000
+    .like
+      font-size 14px
+      line-height 14px
+      color green
+    .vip
+      font-size 14px
+      line-height 14px
+      color #000
 </style>
