@@ -11,6 +11,12 @@ import fastclick from 'fastclick'
 import 'babel-polyfill'
 //引入路由
 //import router from './router/index.js'
+//引入vant
+import Vant from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Vant);
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

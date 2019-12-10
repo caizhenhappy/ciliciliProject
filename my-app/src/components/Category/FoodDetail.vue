@@ -51,6 +51,7 @@
 </template>
 <script>
 export default {
+  name:'FoodDetail',
   data() {
     return {
       value: 3,
