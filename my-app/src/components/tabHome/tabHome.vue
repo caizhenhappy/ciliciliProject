@@ -67,6 +67,7 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
 #tabbarItem
   width: 100%
+  padding-bottom 3.125rem
   display flex
   flex-direction column
   .shoplist
