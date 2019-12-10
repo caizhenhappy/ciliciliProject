@@ -11,6 +11,15 @@ import fastclick from 'fastclick'
 import 'babel-polyfill'
 //引入路由
 //import router from './router/index.js'
+//引入vant
+import Vant from 'vant';
+import 'vant/lib/index.css';
+import axios from 'axios'
+Vue.use(Vant);
+// 全局引入rem
+import '@/config/rem'
+axios.defaults.baseURL = '/apis'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

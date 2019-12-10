@@ -10,7 +10,6 @@ export default new Router({
   //路由模式
   //mode:'history', //不带#
 
-
   routes: [
     {
       path: '/',
