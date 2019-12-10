@@ -14,6 +14,8 @@ import 'babel-polyfill'
 //引入vant
 import Vant from 'vant';
 import 'vant/lib/index.css';
+// 引入mock挂载
+import mock from './mock/mock-server.js'
 Vue.use(Vant);
 
 

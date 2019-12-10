@@ -7,16 +7,16 @@
       <!-- <van-swipe-item v-for="(image, index) in images" :key="index">
       </van-swipe-item> -->
       <van-swipe-item>
-        <img src="" alt="">
+        <img src="../../images/my/7.jpg" alt="">
       </van-swipe-item>
       <van-swipe-item>
-        <img src="" alt="">
+        <img src="../../images/my/8.jpg" alt="">
       </van-swipe-item>
       <van-swipe-item>
-        <img src="" alt="">
+        <img src="../../images/my/9.jpg" alt="">
       </van-swipe-item>
       <van-swipe-item>
-        <img src="" alt="">
+        <img src="../../images/my/10.jpg" alt="">
       </van-swipe-item>
     </van-swipe>
     <div class="detail">
@@ -56,26 +56,21 @@ export default {
     return {
       value: 3,
       images: [
-        // '../../images/my/1.jpg',
-        // '../../images/my/2.jpg',
-        // '../../images/my/3.jpg',
-        // '../../images/my/4.jpg'
+        '../../images/my/1.jpg',
+        '../../images/my/2.jpg',
+        '../../images/my/3.jpg',
+        '../../images/my/4.jpg'
       ]
     }
   },
   methods: {
     goback(){
-      console.log(this);
-      
-      this.$router.back()
+      this.$router.push('/category')
     },
     goDiscuss(){
-      // this.$router.push('/category/discuss')
+      this.$router.push('/category/discuss')
     }
-  },
-  mounted(){
 
-   
   }
 }
 </script>

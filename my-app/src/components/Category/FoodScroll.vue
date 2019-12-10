@@ -2,55 +2,13 @@
   <div>
     <div class="goods">
       <div class="menu-wrapper">
-        <ul>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">商品名称</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">test</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">test</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">test</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">test</span>
-          </li>
-          <li class="menu-item">
-            <span class="text bottom-border-1px">test</span>
+        <ul >
+          <li class="menu-item" v-for="(cate,index) in cates" :key="index">
+            <span class="text bottom-border-1px">{{cate.name}}</span>
           </li>
         </ul>
       </div>
-      <div class="foods-wrapper">
+      <!-- <div class="foods-wrapper">
         <ul>
           <li class="food-list-hook">
             <h1 class="title">商品列表</h1>
@@ -83,180 +41,35 @@
               </li>
             </ul>
           </li>
-          <li class="food-list-hook">
-            <h1 class="title">商品列表</h1>
-            <ul>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li class="food-list-hook">
-            <h1 class="title">商品列表</h1>
-            <ul>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li class="food-list-hook">
-            <h1 class="title">商品列表</h1>
-            <ul>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li class="food-list-hook">
-            <h1 class="title">商品列表</h1>
-            <ul>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li class="food-list-hook">
-            <h1 class="title">商品列表</h1>
-            <ul>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-              <li class="food-item">
-                <div class="icon">
-                  <img src="https://picsum.photos/id/9/57/57" />
-                </div>
-                <div class="content">
-                  <h2 class="name">商品名称2</h2>
-                  <p class="desc">xxxxx</p>
-                  <div class="price">
-                    <span class="now">￥100</span>
-                    <span class="old">￥200</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
         </ul>
-      </div>
+      </div> -->
+      <FoodList />
     </div>
   </div>
 </template>
 <script>
 // 引入BScroll
 import BScroll from 'better-scroll'
+import { reqCategory } from '../../api/index'
+// 引入组件
+import FoodList from './FoodList'
 export default {
   name:'FoodScroll',
   data(){
     return{
-
+      cates:[],
     }
   },
-  mounted() {
+  components:{
+    FoodList
+  },
+ async mounted() {
     // 发送异步请求
     // 初始化滑动对象
     this._initBScroll()
+    const leftResult = await reqCategory() 
+    const cates = leftResult.data.cate
+    this.cates = cates
   },
   methods: {
     //初始化滑动对象
@@ -267,20 +80,17 @@ export default {
         click: true
       })
 
-      // 实例化右侧滑动BScroll 对象
+      /* // 实例化右侧滑动BScroll 对象
       this.rightscroll = new BScroll('.foods-wrapper', {
         click: true,
         // 1 非实时
         // 2 实时的
         // 3 实时的  惯性,编码的设置
         probeType: 1
-      })
+      }) */
       // 纵向滑动的时候获取y滑动的值
     },
-    goFoodDetail(){
-      console.log(this.$router)
-      this.$router.push('/category/foodDetail')
-    }
+    
   }
 }
 </script>
