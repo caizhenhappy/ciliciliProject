@@ -2,6 +2,9 @@ import Home from '../components/home/home'
 import Classify from '../components/classify/classify'
 import Login from '../components/Login/Login'
 import Eat from '../components/Eat/Eat.vue'
+import ShopCart from '../components/ShopCart/ShopCart'
+import Personal from '../components/Personal/Personal'
+import Order from '../components/Personal/Order/Order'
 
 export default [
   {
@@ -20,6 +23,18 @@ export default [
     path: '/eat',
     name: 'Eat',
     component: Eat
+  },
+  {
+    path:'/shopcart',
+    component:ShopCart
+  },
+  {
+    path:'/personal',
+    component:Personal
+  },
+  {
+    path:'/personal/order',
+    component:Order
   },
   {
     path:'/',
