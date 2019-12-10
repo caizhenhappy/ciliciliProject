@@ -5,6 +5,9 @@ import Eat from '../components/Eat/Eat.vue'
 import ShopCart from '../components/ShopCart/ShopCart'
 import Personal from '../components/Personal/Personal'
 import Order from '../components/Personal/Order/Order'
+import Category from '../components/Category/Category.vue'
+import FoodDetail from '../components/Category/FoodDetail.vue'
+import Discuss from '../components/Category/Discuss.vue'
 
 export default [
   {
@@ -37,6 +40,18 @@ export default [
     component:Order
   },
   {
+    path:'/category',
+    component:Category
+  },
+  {
+    path:'/category/foodDetail',
+    component:FoodDetail
+  },
+  {
+    path:'/category/discuss',
+    component:Discuss
+  },
+  {
     path:'/',
     redirect:'/login',
   }
@@ -52,4 +67,5 @@ export default [
   //   path:"/myself",
   //   component:Myself
   // }
+
 ]

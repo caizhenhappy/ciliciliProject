@@ -27,6 +27,7 @@ Vue.use(waterfall)
 //引入vant
 import Vant from 'vant';
 import 'vant/lib/index.css';
+
 import axios from 'axios'
 Vue.use(Vant);
 // 全局引入rem

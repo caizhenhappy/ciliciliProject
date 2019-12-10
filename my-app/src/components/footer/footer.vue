@@ -23,7 +23,7 @@
     <van-tabbar-item replace to="/home" icon="home-o">
       首页
     </van-tabbar-item>
-    <van-tabbar-item replace to="/classify" icon="coupon-o">
+    <van-tabbar-item replace to="/category" icon="coupon-o">
       分类
     </van-tabbar-item>
     <van-tabbar-item replace to="/eat" icon="smile-o">

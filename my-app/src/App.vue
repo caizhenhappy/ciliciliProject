@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <!-- 路由组件显示 -->
     <router-view></router-view>
     <!-- 底部导航 -->
@@ -37,10 +38,10 @@ export default {
 };
 </script>
 
-
 <style lang="stylus" rel="stylesheet/stylus">
   html,body,#app
     width 100%
     height 100%
+
 </style>
 
