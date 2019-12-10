@@ -6,9 +6,12 @@
            aria-hidden="true">
         <use xlink:href="#icon-sousuo"></use>
       </svg>
-      <input type="search"
+      <input id='searchFood' type="search"
+             v-model="content"
              placeholder="搜索菜谱、食材" />
-            
+             <svg v-if='content' @click='clearSearch'  class="icon-3" aria-hidden="true">
+  <use xlink:href="#icon-close"></use>
+</svg>
      <svg class="icon-2" 
            aria-hidden="true">
         <use xlink:href="#icon-saoyisao"></use>
@@ -26,15 +29,25 @@
 
 <script>
 
-import '../../../assets/fonts/iconfont-saoyisao.js'
+import '../../../assets/iconfont.js'
 
 
 export default {
   name: 'Search',
-  methods:{
-   
+  data(){
+    return {
+      content:'',
+      icon3Show:false
     }
-  }
+   
+  },
+  methods:{
+    clearSearch(){
+      this.content=''
+    }
+   }
+    }
+
 
 </script>
 
@@ -58,8 +71,8 @@ export default {
       color #999999
       position absolute
       left 0.3rem
-      top 0.3rem
-    input
+      top 0.2rem
+    #searchFood
       border-radius 1.75rem
       height 1.75rem
       line-height 1.75rem
@@ -67,6 +80,18 @@ export default {
       width 90%
       padding 0 0.875rem 0 1.75rem
       background-color #f2f2f2
+    input::-webkit-search-cancel-button
+      display none 
+    .icon-3 
+      width: 1.4rem;
+      height: 1.4rem;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+      color #999999
+      position absolute
+      top 0.2rem
+      right 2.3rem
     .icon-2
       width 1.2rem
       height 1.2rem

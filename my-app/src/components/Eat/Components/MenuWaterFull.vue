@@ -11,7 +11,7 @@
                @loadmore="loadmore">
       <div class="cell-item"
            v-for="(item,index) in data"
-           :key="item.id">
+           :key="index">
         <img v-lazy="item.image">
         <div class="item-body">
           <div class="item-desc">{{item.name}}</div>
@@ -60,7 +60,7 @@ export default {
         },
          {id:4,
         name:'奥利给2',
-        image:'http://img1.imgtn.bdimg.com/it/u=397538209,1699549644&fm=26&gp=0.jpg',
+        image:'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3727682839,1937007066&fm=26&gp=0.jpg',
         author_name:'奥利给',
         author_avatar:'http://img3.imgtn.bdimg.com/it/u=1743215902,1200853451&fm=26&gp=0.jpg'
         },
@@ -84,7 +84,7 @@ export default {
         },
          {id:8,
         name:'奥利给2',
-        image:'http://img1.imgtn.bdimg.com/it/u=397538209,1699549644&fm=26&gp=0.jpg',
+        image:'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3727682839,1937007066&fm=26&gp=0.jpg',
         author_name:'奥利给',
         author_avatar:'http://img3.imgtn.bdimg.com/it/u=1743215902,1200853451&fm=26&gp=0.jpg'
         },
@@ -126,19 +126,44 @@ export default {
         },
         {id:15,
         name:'奥利给',
-        image:'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2853553659,1775735885&fm=26&gp=0.jpg',
+        image:'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3727682839,1937007066&fm=26&gp=0.jpg',
         author_name:'奥利给',
         author_avatar:'http://img3.imgtn.bdimg.com/it/u=1743215902,1200853451&fm=26&gp=0.jpg'
         },
-     /*     {id:16,
+         {id:16,
         name:'奥利给2',
         image:'http://img1.imgtn.bdimg.com/it/u=397538209,1699549644&fm=26&gp=0.jpg',
         author_name:'奥利给',
         author_avatar:'http://img3.imgtn.bdimg.com/it/u=1743215902,1200853451&fm=26&gp=0.jpg'
-        }, */
-         {id:17,
+        }, 
+        
+          {id:18,
         name:'奥利给',
         image:'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2853553659,1775735885&fm=26&gp=0.jpg',
+        author_name:'奥利给',
+        author_avatar:'http://img3.imgtn.bdimg.com/it/u=1743215902,1200853451&fm=26&gp=0.jpg'
+        },
+         {id:19,
+        name:'奥利给',
+        image:'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2853553659,1775735885&fm=26&gp=0.jpg',
+        author_name:'奥利给',
+        author_avatar:'http://img3.imgtn.bdimg.com/it/u=1743215902,1200853451&fm=26&gp=0.jpg'
+        },
+         {id:20,
+        name:'奥利给',
+        image:'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3727682839,1937007066&fm=26&gp=0.jpg',
+        author_name:'奥利给',
+        author_avatar:'http://img3.imgtn.bdimg.com/it/u=1743215902,1200853451&fm=26&gp=0.jpg'
+        },
+         {id:21,
+        name:'奥利给',
+        image:'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2853553659,1775735885&fm=26&gp=0.jpg',
+        author_name:'奥利给',
+        author_avatar:'http://img3.imgtn.bdimg.com/it/u=1743215902,1200853451&fm=26&gp=0.jpg'
+        },
+         {id:22,
+        name:'奥利给',
+        image:'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3727682839,1937007066&fm=26&gp=0.jpg',
         author_name:'奥利给',
         author_avatar:'http://img3.imgtn.bdimg.com/it/u=1743215902,1200853451&fm=26&gp=0.jpg'
         },
