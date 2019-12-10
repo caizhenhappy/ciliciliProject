@@ -27,7 +27,7 @@
                   required
                 />
             </van-cell-group>
-             <van-button type="info" size="large" class="inpBoxText" @click="login">登录</van-button>
+             <van-button type="info" size="large" class="inpBoxText" @click.prevent="login">登录</van-button>
         </van-tab>
         </form>
 
@@ -100,30 +100,48 @@ import axios from 'axios'
         console.log(title)
       },
       login(username,password){
-        // if(!this.username==='' || !this.password===''){
-        //     axios.get('http://localhost:8000/login',{
-        //       params:{
-        //         username:this.username,
-        //         password:this.password
-        //       }
-        //     }).then((response)=>{
-        //       console.log(response);
-        //     })
-        // }else{
-        //   this.$toast("用户名或者密码不能为空");
-        // }
+        if(this.username!=='' || !this.password!==''){
+            axios.get('/api/login',{
+              params:{
+                username:this.username,
+                password:this.password
+              }
+            }).then((response)=>{
+              console.log(response);
+              if(response.data.code === 0){
+                this.$toast('登录成功')
+                //跳转页面
+                this.$router.replace('/home')
+              }else if(response.data.code === 1){
+                this.$toast('登录名或密码错误,请重新登录')
+              }else{
+                this.$toast('未知错误,请联系管理员')
+              }
+            })
+        }else{
+          this.$toast("用户名或者密码不能为空");
+        }
       },
       registered(username,password,rePassword){
-
         if(this.username!=='' || this.password!=='' || this.rePassword!==''){
-          axios.get('http://localhost:5000/registered',{
+          axios.get('/api/registered',{
             params:{
                 username:this.username,
-                password:this.password,
-                rePassword:this.rePassword
+                password:this.password
               }
           }).then((response)=>{
-              console.log(response);
+            console.log(response)
+              if(response.data.code===1){
+                this.$toast('用户名已存在')
+                this.username=''
+                this.password=''
+                return
+              }else if(response.data.code===0){
+                this.$toast('注册成功')
+                this.username=''
+                this.password=''
+                this.rePassword=''
+              }
             })
         }else{
           this.$toast("用户名、密码、确认密码不能为空");
@@ -131,7 +149,6 @@ import axios from 'axios'
       },
       agreement(index){
         if(index == 0){
-          console.log('000')
           Toast({
           message: '用户协议-哈喽哈喽',
           duration: 800

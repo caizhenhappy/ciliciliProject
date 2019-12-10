@@ -18,7 +18,7 @@ import axios from 'axios'
 Vue.use(Vant);
 // 全局引入rem
 import '@/config/rem'
-axios.defaults.baseURL = '/apis'
+//axios.defaults.baseURL = '/api'
 
 Vue.config.productionTip = false
 

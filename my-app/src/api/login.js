@@ -11,35 +11,40 @@ const Users = require('./models/user.js')
 app.get('/login',async (req,res)=>{
   const {username,password} = req.query
   const result = await Users.findOne({username,password})
+  console.log(result)
   if(result){
-    res.send('登录成功')
-    return 0
+    const data = { code: 0, data:'登录成功'}
+    res.send({code: 0, data})
+  }else{
+    const data = {code: 1, data:'帐号或密码错误,请重新输入'}
+    res.send(data)
   }
-  return 1
+  
 })
 //注册
  app.get('/registered',async (req,res)=>{
   //获取用户提交的数据
-  const {username,password,rePassword} = req.query
-  console.log(username)
-   console.log('哈哈222')
+  const {username,password} = req.query
+  
   //校验数据是否存在
   const result = await Users.findOne({username})
   console.log(result)
-   console.log('哈哈111')
   if(result){
-    res.send('用户名已存在')
-    console.log('哈哈')
-    return 1
+    console.log('注册没成功')
+    const data = { code : 1,data:'用户名已存在'}
+    res.send(data)
+  }else{
+    //将用户数据存入数据库中
+    Users.create({
+      username,
+      password
+    })
+    console.log('成功')
+    const data = { code : 0,data:'注册成功'}
+    //返回注册成功
+    res.send(data)
   }
-  //将用户数据存入数据库中
-  Users.create({
-    username,
-    password
-  })
-  //返回注册成功
-  res.send('注册成功')
-  return 0
+  
 })
 // require('./db')
 //监听端口号

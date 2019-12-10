@@ -1,26 +1,41 @@
 <template>
   <div id="app">
-    
-    <router-view/>
+
+    <!-- 路由组件显示 -->
+    <router-view></router-view>
+    <!-- 底部导航 -->
+    <Footer />
+
   </div>
 </template>
-
 <script>
 
-// 禁止手机端扩大和缩小手势
-window.onload = function () {
-  document.addEventListener('touchstart', function (event) {
+//防止放大缩小
+window.onload = function() {
+  document.addEventListener("touchstart", function(event) {
     if (event.touches.length > 1) {
-      event.preventDefault()
+      event.preventDefault();
     }
-  })
-  document.addEventListener('gesturestart', function (event) {
-    event.preventDefault()
-  })
-}
-// export default {
-//   name: 'App'
-// }
+  });
+  document.addEventListener("gesturestart", function(event) {
+    event.preventDefault();
+  });
+};
+
+import Footer from "./components/footer/footer";
+
+export default {
+  name: "App",
+  data() {
+    return {
+      isShow:false
+    }
+  },
+  components: {
+    Footer
+  }
+  
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
@@ -31,3 +46,4 @@ html , body
     height 100%
     width 100%
 </style>
+
