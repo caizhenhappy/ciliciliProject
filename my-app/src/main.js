@@ -9,6 +9,19 @@ import './assets/stylus/index.styl'
 import fastclick from 'fastclick'
 //对es6的一些api转义
 import 'babel-polyfill'
+// 全局引入rem
+import './rem'
+
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload, {
+  preLoad: 1.3,  //预加载高度比例
+  loading: 'http://img4.imgtn.bdimg.com/it/u=4061390949,2489050853&fm=26&gp=0.jpg',  //预加载图片
+  attempt: 1  //尝试加载图片数量
+})
+
+import waterfall from 'vue-waterfall2'
+Vue.use(waterfall)
+
 //引入路由
 //import router from './router/index.js'
 //引入vant

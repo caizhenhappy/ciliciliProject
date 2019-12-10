@@ -26,13 +26,13 @@
     <van-tabbar-item replace to="/classify" icon="coupon-o">
       分类
     </van-tabbar-item>
-    <van-tabbar-item replace to="/classi" icon="smile-o">
+    <van-tabbar-item replace to="/eat" icon="smile-o">
       吃什么
     </van-tabbar-item>
-    <van-tabbar-item replace to="/classif" icon="cart-o">
+    <van-tabbar-item replace to="/shopcart" icon="cart-o">
       购物车
     </van-tabbar-item>
-    <van-tabbar-item replace to="/class" icon="manager-o">
+    <van-tabbar-item replace to="/personal" icon="manager-o">
       我的
     </van-tabbar-item>
   </van-tabbar>

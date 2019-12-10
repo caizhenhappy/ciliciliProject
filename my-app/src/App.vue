@@ -38,6 +38,7 @@ export default {
 };
 </script>
 
+
 <style lang="stylus" rel="stylesheet/stylus">
 html , body
   width 100%

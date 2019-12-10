@@ -1,5 +1,6 @@
 //引入vue
 import Vue from 'vue'
+
 // 引入VueRouter
 import VueRouter from 'vue-router'
 // 引入routes

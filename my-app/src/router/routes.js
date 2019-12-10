@@ -1,6 +1,7 @@
 import Home from '../components/home/home'
 import Classify from '../components/classify/classify'
 import Login from '../components/Login/Login'
+import Eat from '../components/Eat/Eat.vue'
 
 export default [
   {
@@ -14,6 +15,11 @@ export default [
   {
     path:"/classify",
     component:Classify
+  },
+  {
+    path: '/eat',
+    name: 'Eat',
+    component: Eat
   },
   {
     path:'/',
