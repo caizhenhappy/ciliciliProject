@@ -1,47 +1,187 @@
 <template>
   <div class="OD">
     <header class="OD_header">
-      <div @click="goBack">
+      <div @click.stop="goBack">
         <ICon into="back" class="back" />
       </div>
       <p>我的订单</p>
     </header>
-
-    <ul class="OD_type">
-      <li>
-        <span class="choose">全部</span>
-      </li>
-      <li>
-        <span>待支付</span>
-      </li>
-      <li>
-        <span>待收货</span>
-      </li>
-      <li>
-        <span>待评价</span>
-      </li>
-    </ul>
     <div class="OD_listContainer">
-      <ul>
-        <li class="OD_all">全部</li>
-        <li class="OD_bePaied">待支付</li>
-        <li class="OD_beGot">待收货</li>
-        <li class="OD_BeRated">待评价</li>
-      </ul>
-    </div>
-    <div class="notOrder off">
-      <p>暂时还没有相关订单</p>
+      <van-tabs
+        v-model="active"
+        class="orderCard"
+        swipeable
+        color="#3BBA63"
+        title-active-color="#3BBA63"
+        animated
+        sticky
+        lazy-render
+      >
+        <!-- 全部 -->
+        <van-tab title="全部" class="card">
+          <div v-if="orders.length">
+            <OrderItem />
+          </div>
+          <div class="notOrder" v-else>
+            <p>近三个月无订单记录</p>
+          </div>
+        </van-tab>
+        <!-- 待支付 -->
+        <van-tab title="待支付" class="card">
+          <div v-if="orders.length">
+            <OrderItem />
+          </div>
+          <div class="notOrder" v-else>
+            <p>暂时还没有待支付订单</p>
+          </div>
+        </van-tab>
+        <!-- 待收货 -->
+        <van-tab title="待收货" class="card">
+          <div class="notOrder">
+            <p>暂时还没有待收货订单</p>
+          </div>
+          <ul>
+            <li></li>
+          </ul>
+        </van-tab>
+        <!-- 待评价 -->
+        <van-tab title="待评价" class="card">
+          <div class="notOrder">
+            <p>暂时还没有待评价订单</p>
+          </div>
+          <ul>
+            <li></li>
+          </ul>
+        </van-tab>
+      </van-tabs>
     </div>
   </div>
 </template>
 
 <script>
 import ICon from '../ICon/ICon'
-import { Swipe, SwipeItem } from 'vant'
+import OrderItem from './OrderItem/OrderItem'
 export default {
   name: 'Order',
+  data() {
+    return {
+      start: null,
+      active: 1,
+      //订单数据
+      orders: [
+        {
+          //第一个订单
+          products: [
+            {
+              name: '智利啥玩意车厘子J级', //商品名
+              img: require('../images/apple.jpg'), //商品图片
+              weight: '260g', //商品单份含量
+              price: '29.90', //单价
+              count: 1 //数量
+            },
+            {
+              name: '橙子',
+              img: require('../images/apple.jpg'),
+              weight: '260g',
+              price: '29.90',
+              count: 2
+            },
+            {
+              name: '橙子',
+              img: require('../images/apple.jpg'),
+              weight: '260g',
+              price: '29.90',
+              count: 2
+            },
+            {
+              name: '橙子',
+              img: require('../images/apple.jpg'),
+              weight: '260g',
+              price: '29.90',
+              count: 2
+            },
+            {
+              name: '橙子',
+              img: require('../images/apple.jpg'),
+              weight: '260g',
+              price: '29.90',
+              count: 2
+            },
+            {
+              name: '橙子',
+              img: require('../images/apple.jpg'),
+              weight: '260g',
+              price: '29.90',
+              count: 2
+            }
+          ],
+          time: '2019-12-10 21:23:36', //订单生成时间（结算）
+          total: 23.23 //总价
+        },
+        {
+          //第二份订单
+          products: [
+            {
+              name: '智利啥玩意车厘子J级',
+              img: require('../images/apple.jpg'),
+              weight: '260g',
+              price: '29.90',
+              count: 1
+            }
+          ],
+          time: '2019-12-10 21:23:36',
+          total: 23.23
+        },
+        {
+          //第二份订单
+          products: [
+            {
+              name: '智利啥玩意车厘子J级',
+              img: require('../images/apple.jpg'),
+              weight: '260g',
+              price: '29.90',
+              count: 1
+            }
+          ],
+          time: '2019-12-10 21:23:36',
+          total: 23.23
+        },
+        {
+          //第二份订单
+          products: [
+            {
+              name: '智利啥玩意车厘子J级',
+              img: require('../images/apple.jpg'),
+              weight: '260g',
+              price: '29.90',
+              count: 1
+            }
+          ],
+          time: '2019-12-10 21:23:36',
+          total: 23.23
+        },
+        {
+          //第二份订单
+          products: [
+            {
+              name: '智利啥玩意车厘子J级',
+              img: require('../images/apple.jpg'),
+              weight: '260g',
+              price: '29.90',
+              count: 1
+            }
+          ],
+          time: '2019-12-10 21:23:36',
+          total: 23.23
+        }
+      ],
+      waitRec: [],
+      waitRate: []
+    }
+  },
   components: {
-    ICon
+    ICon,
+    OrderItem
   },
   methods: {
     goBack() {
@@ -55,11 +195,11 @@ export default {
 .off
   display none
 .OD
+  box-sizing border-box
   width 100%
   height 100%
   background-color #f5f5f5
-  position relative
-  
+  border-top 47px solid #f5f5f5
   .OD_header
     height 44px
     width 100%
@@ -74,52 +214,23 @@ export default {
       position absolute
       left 0
       top 3px
-  .OD_type
-    width 100%
-    height 40px
-    line-height 44px
-    position fixed
-    top 46px
-    display flex
-    background-color #fff
-    li
-      flex-grow 1
-      span
-        font-size 14px
-        margin 0 auto
-        text-align center
-        display block
-        height 37px
-        width 47px
-        &.choose
-          border-bottom 3px solid #28BE57
-          color #28BE57
-  .notOrder
-    width 100%
-    height 350px
-    transform translateY(150px)
-    background url('../images/notOrder.jpeg') center center no-repeat
-    background-size 225px 211px
-    position relative
-    p
-      width 100%
-      height 30px
-      font-size 14px
-      color #777
-      text-align center
-      position absolute
-      top 280px
   .OD_listContainer
     width 100%
     height 100%
-    overflow hidden
-    background-color red
-    ul
-      width 400%
-      height 100%
-      display flex
-      li
-        width 25%
-        height 100%
-        line-height 100%
+    .orderCard
+      .card
+        .notOrder
+          width 100%
+          height 350px
+          background url('../images/notOrder.jpeg') center center no-repeat
+          background-size 225px 211px
+          position relative
+          p
+            width 100%
+            height 30px
+            font-size 14px
+            color #777
+            text-align center
+            position absolute
+            top 280px
 </style>

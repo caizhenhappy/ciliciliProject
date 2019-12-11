@@ -33,7 +33,7 @@
             <ICon beto="beRated" class="beto" />
             <p>待评价</p>
           </li>
-          <li @click="toShowOrder">
+          <li>
             <ICon beto="postSale" class="beto" />
             <p>售后/退款</p>
           </li>
