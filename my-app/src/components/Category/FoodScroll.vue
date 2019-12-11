@@ -35,10 +35,13 @@ export default {
     // 发送异步请求
     // 初始化滑动对象
     this._initBScroll()
+    // 使用mock 数据请求
     const leftResult = await reqCategory()
     //console.log(leftResult);
     const cates = leftResult.data.cate
+    // 更改数据,让遍历的数据变成 mock请求到的数据
     this.cates = cates
+    // 使用 vux 数据请求
     await this.$store.dispatch('getShop')
     const pro = this.$store.state.shop
     this.products = pro
