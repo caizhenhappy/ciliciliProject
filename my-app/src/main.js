@@ -4,14 +4,18 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 //引入样式重置
-import  './mock/mock-server'
+import './mock/mock-server'
 import './assets/stylus/index.styl'
 //解决移动端300毫秒延迟
 import fastclick from 'fastclick'
+//事件总线
+Vue.prototype.$bus = new Vue()
+//vuex
+import store from './store/index'
 //对es6的一些api转义
 import 'babel-polyfill'
-import Vant from 'vant';
-import 'vant/lib/index.css';
+import Vant from 'vant';
+import 'vant/lib/index.css';
 Vue.use(Vant);
 //引入路由
 //import router from './router/index.js'
@@ -23,5 +27,6 @@ new Vue({
   router,
   components: { App },
   template: '<App/>',
+  store
   //router //注册路由
 })

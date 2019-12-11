@@ -1,22 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-//声明使用vuex
+
+import { reqHomeTab } from "../api/index"
+
 Vue.use(Vuex)
-//引入vuex 对象
-import state from './state.js'
-import mutations from './mutations.js'
-import actions from './actions.js'
-import getters from './getters.js'
-
-//引入模块
-
-//暴露
 export default new Vuex.Store({
-  state,
-  mutations,
-  actions,
-  getters,
-  modules:{
-   
+  state: {
+    //详细些数据
+    shop:{}
+  },
+  mutations: {
+    "changshop"(state, shop) {
+      state.shop = shop
+    }
+  },
+  actions: {
+   async getShop({ commit }) {
+    const result =  await reqHomeTab()
+    commit('changshop',result.data.data.cate[0].products)
+    }
   }
 })

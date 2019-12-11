@@ -1,12 +1,12 @@
 <template>
   <div id="produceItem">
-    <div class="item">
-      <img src="https://picsum.photos/id/4/300/300" alt="" />
-      <p class="itemsTitle">手杆面 300g/盒</p>
-      <p class="itemSubTitle">够劲到的面</p>
+    <div class="item" @click="gotoDetail(shop)">
+      <img :src="shop.small_image" alt="" />
+      <p class="itemsTitle">{{ shop.name }}</p>
+      <p class="itemSubTitle">{{ shop.spec }}</p>
       <div>
-        <span class="price">￥8.90</span>
-        <span class="originPrice">￥8.90</span>
+        <span class="price">{{ shop.price }}</span>
+        <span class="originPrice">{{ shop.origin_price }}</span>
         <div class="buyCar">
           <img src="" alt="" />
         </div>
@@ -16,7 +16,21 @@
 </template>
 
 <script type="text/javascript">
-export default {};
+export default {
+  data() {
+    return {
+      // shop:{}
+    };
+  },
+  props: ["shop"],
+  methods: {
+    gotoDetail(shop) {
+      if (shop !== {}) {
+        this.$router.push(`/detail/${shop.id}`);
+      }
+    }
+  }
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

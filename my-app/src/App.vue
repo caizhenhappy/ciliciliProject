@@ -3,7 +3,7 @@
     <!-- 路由组件显示 -->
     <router-view></router-view>
     <!-- 底部导航 -->
-    <Footer />
+    <Footer v-show="$route.meta.isShow === true" />
   </div>
 </template>
 <script>
@@ -20,11 +20,15 @@ window.onload = function() {
 };
 
 import Footer from "./components/footer/footer";
-
+import { getShop } from "../src/store/index";
+import { mapState } from "vuex";
 export default {
   name: "App",
   components: {
     Footer
+  },
+  mounted() {
+    this.$store.dispatch('getShop');
   }
 };
 </script>

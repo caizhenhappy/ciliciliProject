@@ -69,7 +69,6 @@ export default {
     const result = await reqFeature();
     //item 所有数据的集合
     const item = result.data.special_zone;
-    console.log(item);
     const {
       hotItemList, //十月爆款
       lowPriceItemList, //平价
