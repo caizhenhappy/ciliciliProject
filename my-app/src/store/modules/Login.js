@@ -16,7 +16,7 @@ const mutations = {
  },
  //重置用户信息
  [SET_USER](state){
-   state.user = {}
+   state.userInfo = {}
  },
  //重置token
  [SET_TOKEN](state){

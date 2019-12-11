@@ -98,6 +98,7 @@ import axios from 'axios'
       },
       loginInp(name, title) {
         // this.$toast(title);
+        console.log(name)
         console.log(title)
       },
       login(username,password){
