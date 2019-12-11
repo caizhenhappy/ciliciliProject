@@ -1,5 +1,5 @@
 import Home from '../components/home/home'
-import Classify from '../components/classify/classify'
+import Category from '../components/Category/Category'
 import Detail from '../components/detail/detail.vue'
 
 export default [
@@ -11,8 +11,8 @@ export default [
     }
   },
   {
-    path: "/classify",
-    component: Classify,
+    path: "/Category",
+    component: Category,
     meta: {
       isShow: true
     }

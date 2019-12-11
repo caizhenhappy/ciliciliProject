@@ -10,6 +10,8 @@ import './assets/stylus/index.styl'
 import fastclick from 'fastclick'
 //事件总线
 Vue.prototype.$bus = new Vue()
+//黄回到顶部
+import VTop from './components/backToTop/ToTop.vue'
 //vuex
 import store from './store/index'
 //对es6的一些api转义
@@ -21,6 +23,9 @@ Vue.use(Vant);
 //import router from './router/index.js'
 Vue.config.productionTip = false
 
+
+Vue.use(Vant)
+Vue.component('v-top',VTop)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

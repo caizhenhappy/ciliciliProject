@@ -1,0 +1,37 @@
+{
+  "id": "1468641",
+  "name": "0708",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11231845",
+      "name": "anchor_link",
+      "font_class": "anchor_link",
+      "unicode": "e798",
+      "unicode_decimal": 59288
+    },
+    {
+      "icon_id": "11231914",
+      "name": "internet",
+      "font_class": "internet",
+      "unicode": "e7a8",
+      "unicode_decimal": 59304
+    },
+    {
+      "icon_id": "11232010",
+      "name": "VR",
+      "font_class": "VR",
+      "unicode": "e7bd",
+      "unicode_decimal": 59325
+    },
+    {
+      "icon_id": "12250100",
+      "name": "icon-qq",
+      "font_class": "icon-qq",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    }
+  ]
+}

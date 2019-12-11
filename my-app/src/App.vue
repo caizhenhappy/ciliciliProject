@@ -1,9 +1,13 @@
 <template>
   <div id="app">
     <!-- 路由组件显示 -->
-    <router-view></router-view>
+    <keep-alive include='Home'>
+      <router-view></router-view>
+    </keep-alive>
+
     <!-- 底部导航 -->
     <Footer v-show="$route.meta.isShow === true" />
+    <v-top/>
   </div>
 </template>
 <script>
@@ -28,7 +32,7 @@ export default {
     Footer
   },
   mounted() {
-    this.$store.dispatch('getShop');
+    this.$store.dispatch("getShop");
   }
 };
 </script>

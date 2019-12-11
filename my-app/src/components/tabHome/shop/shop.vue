@@ -25,9 +25,9 @@ export default {
   props: ["shop"],
   methods: {
     gotoDetail(shop) {
-      if (shop !== {}) {
+    
         this.$router.push(`/detail/${shop.id}`);
-      }
+      
     }
   }
 };
