@@ -27,7 +27,7 @@
                   required
                 />
             </van-cell-group>
-             <van-button type="info" size="large" class="inpBoxText" @click.prevent="login">登录</van-button>
+             <van-button type="info" size="large" class="inpBoxText" @click.prevent="login" >登录</van-button>
         </van-tab>
         </form>
 
@@ -88,7 +88,8 @@ import axios from 'axios'
       return {
         username:'',
         password:'',
-        rePassword:''
+        rePassword:'',
+        oken:localStorage.getItem('token_key')
       }
     },
     methods: {
@@ -110,6 +111,9 @@ import axios from 'axios'
               console.log(response);
               if(response.data.code === 0){
                 this.$toast('登录成功')
+                console.log(response.data.data)
+                //登录成功后保存用户信息
+                this.$store.dispatch('saveUser',response.data.data)
                 //跳转页面
                 this.$router.replace('/home')
               }else if(response.data.code === 1){
@@ -159,6 +163,27 @@ import axios from 'axios'
           duration: 800
         });
         }
+      }
+    },
+    mounted() {
+      //自动登录,判断是否存在token
+      //存在就调用接口把token作为参数传过去
+      if(this.oken){
+          axios.get('/api/auto_login',{
+              params:{
+                token:this.oken
+              }
+            }).then((response)=>{
+              console.log(response.data)
+              if(response.data.code===0){
+                //登录成功后保存用户信息
+                this.$store.dispatch('saveUser',response.data)
+                //跳转页面
+                this.$router.replace('/home')
+              }else if(response.data.status===401){
+                this.$toast("token失效,请重新登录");
+              }
+            })
       }
     },
   }

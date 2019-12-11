@@ -11,6 +11,8 @@ import fastclick from 'fastclick'
 import 'babel-polyfill'
 // 全局引入rem
 import './rem'
+//引入vuex(store)
+import store from './store/index.js'
 
 import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload, {
@@ -40,6 +42,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>',
   //router //注册路由

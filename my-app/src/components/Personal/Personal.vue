@@ -5,8 +5,8 @@
       <div class="PS_user">
         <img src="./images/avatar.jpeg" class="avatar" alt="avatar" />
         <div>
-          <p>极客James</p>
-          <p>手机号:15767139717</p>
+          <p>{{userInfo.username}}</p>
+          <!-- <p>手机号:15767139717</p> -->
         </div>
       </div>
     </header>
@@ -78,12 +78,15 @@
         </li>
       </ul>
     </article>
+    <van-button type="danger" size="large" class="loginOut" @click.prevent="loginOut" >退出</van-button>
     <p class="PS_version">当前版本1.2.0</p>
   </div>
 </template>
 
 <script>
 import ICon from './ICon/ICon'
+import {mapState} from 'vuex'
+import {Dialog} from 'vant'
 export default {
   components: {
     ICon
@@ -92,7 +95,24 @@ export default {
     toShowOrder(){
       console.log(this.$router)
       this.$router.push('/personal/order')
+    },
+    loginOut(){
+      Dialog.confirm({
+        message: '确定退出吗?'
+      }).then(() => {
+       this.$store.dispatch('setUser')
+        //跳转页面
+        this.$router.replace('/login')
+      }).catch(() => {
+        // on cancel
+      });
     }
+  },
+  computed: {
+    
+    ...mapState({
+      userInfo:state=>state.Login.userInfo
+    })
   }
 }
 </script>
@@ -166,10 +186,13 @@ export default {
         line-height 30px
   .PS_order
     margin-bottom 10px
+  .loginOut
+    margin-top 20px
   .PS_version
     height 20px
     line-height 20px
     font-size 12px
     color #555
     text-align center
+    margin-top 20px
 </style>

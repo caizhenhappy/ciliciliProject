@@ -4,4 +4,3 @@ import qs from 'qs'
 // export default function ajax(url='',params={},method='GET'){
     
 // }
-
