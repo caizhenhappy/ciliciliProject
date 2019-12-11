@@ -1,43 +1,54 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Vue from "vue";
+import App from "./App";
+import router from "./router";
 //引入样式重置
-import './assets/stylus/index.styl'
+import "./assets/stylus/index.styl";
 //解决移动端300毫秒延迟
-import fastclick from 'fastclick'
+import fastclick from "fastclick";
 //对es6的一些api转义
-import 'babel-polyfill'
+import "babel-polyfill";
 // 全局引入rem
-import './rem'
-//搞不好 
-import mock from  './mock/mock-server.js' 
+import "./rem";
 
-import Vant from 'vant';
-import 'vant/lib/index.css';
+//搞不好
+import mock from "./mock/mock-server.js";
 
-Vue.use(Vant);
+//引入vuex(store)
+import store from "./store/index.js";
 
-import VueLazyload from 'vue-lazyload'
+import VueLazyload from "vue-lazyload";
 Vue.use(VueLazyload, {
-  preLoad: 1.3,  //预加载高度比例
-  loading: 'http://img4.imgtn.bdimg.com/it/u=4061390949,2489050853&fm=26&gp=0.jpg',  //预加载图片
-  attempt: 1  //尝试加载图片数量
-})
+  preLoad: 1.3, //预加载高度比例
+  loading:
+    "http://img4.imgtn.bdimg.com/it/u=4061390949,2489050853&fm=26&gp=0.jpg", //预加载图片
+  attempt: 1 //尝试加载图片数量
+});
 
-import waterfall from 'vue-waterfall2'
-Vue.use(waterfall)
+import waterfall from "vue-waterfall2";
+Vue.use(waterfall);
 
 //引入路由
 //import router from './router/index.js'
-Vue.config.productionTip = false
+//引入vant
+import Vant from "vant";
+import "vant/lib/index.css";
+
+import axios from "axios";
+Vue.use(Vant);
+// 全局引入rem
+import "@/config/rem";
+//axios.defaults.baseURL = '/api'
+
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: "#app",
   router,
+  store,
   components: { App },
-  template: '<App/>',
+  template: "<App/>"
   //router //注册路由
-})
+});
