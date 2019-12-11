@@ -5,6 +5,9 @@ import Eat from '../components/Eat/Eat.vue'
 import ShopCart from '../components/ShopCart/ShopCart'
 import Personal from '../components/Personal/Personal'
 import Order from '../components/Personal/Order/Order'
+import Coupon from '../components/Personal/Coupon/Coupon'
+import Address from '../components/Personal/Address/Address'
+import PostSale from '../components/Personal/PostSale/PostSale'
 import Category from '../components/Category/Category.vue'
 import FoodDetail from '../components/Category/FoodDetail.vue'
 import Discuss from '../components/Category/Discuss.vue'
@@ -12,32 +15,74 @@ import Discuss from '../components/Category/Discuss.vue'
 export default [
   {
     path: '/login',
-    component: Login
+    component: Login,
+    meta:{
+      isShow:true
+    }
   },
   {
     path: '/home',
-    component: Home
+    component: Home,
+    meta:{
+      isShow:true
+    }
   },
   {
     path:"/classify",
-    component:Classify
+    component:Classify,
+    meta:{
+      isShow:true
+    }
   },
   {
     path: '/eat',
     name: 'Eat',
-    component: Eat
+    component: Eat,
+    meta:{
+      isShow:true
+    }
   },
   {
     path:'/shopcart',
-    component:ShopCart
+    component:ShopCart,
+    meta:{
+      isShow:true
+    }
   },
   {
     path:'/personal',
-    component:Personal
+    component:Personal,
+    meta:{
+      isShow:true
+    }
   },
   {
-    path:'/personal/order',
-    component:Order
+    path:'/personal/order/:id',
+    component:Order,
+    meta:{
+      isShow:false
+    }
+  },
+  {
+    path:'/personal/coupon',
+    component:Coupon,
+    meta:{
+      isShow:false
+    }
+  },
+  {
+    path:'/personal/address',
+    component:Address,
+    meta:{
+      isShow:false
+    }
+  },
+  {
+    path:'/personal/postsale',
+    component:PostSale,
+    meta:{
+      isShow:false
+    }
   },
   {
     path:'/category',

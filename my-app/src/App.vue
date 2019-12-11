@@ -4,7 +4,7 @@
     <!-- 路由组件显示 -->
     <router-view></router-view>
     <!-- 底部导航 -->
-    <Footer />
+    <Footer v-if="$route.meta.isShow"/>
 
   </div>
 </template>
@@ -28,13 +28,11 @@ export default {
   name: "App",
   data() {
     return {
-      isShow:false
     }
   },
   components: {
     Footer
-  }
-  
+  },
 };
 </script>
 

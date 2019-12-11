@@ -16,7 +16,7 @@ const mutations = {
  },
  //重置用户信息
  [SET_USER](state){
-   state.user = {}
+   state.userInfo = {}
  },
  //重置token
  [SET_TOKEN](state){
@@ -37,7 +37,6 @@ const actions = {
     //非必须操作,删掉仅仅是为了user跟token脱离关系. 没必要多存一次token
     delete user.token
     const userInfo1 = user.data
-    console.log(userInfo1)
     //保存用户信息
     commit(SAVE_USER,userInfo1)
    

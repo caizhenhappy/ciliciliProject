@@ -5,49 +5,52 @@
       <div class="PS_user">
         <img src="./images/avatar.jpeg" class="avatar" alt="avatar" />
         <div>
-          <p>{{userInfo.username}}</p>
-          <!-- <p>手机号:15767139717</p> -->
+          <p>{{userInfo.username?userInfo.username:'未登录'}}</p>
+          <p v-if="userInfo.username">{{userInfo.phone?userInfo.phone:'未绑定手机'}}</p>
         </div>
       </div>
     </header>
     <article>
       <div class="PS_order">
-        <div class="PS_list">
+        <div class="PS_list" @click="toShowOrder">
           <ICon icon="order" />
           <span>我的订单</span>
-          <div @click="toShowOrder" class="showOrder">
+          <div class="showOrder">
             <span class="allOrder">查看全部订单</span>
             <ICon into="into" />
           </div>
         </div>
         <ul class="orderList">
-          <li @click="toShowOrder">
+          <li @click="()=>{toShowOrder(1)}">
+            <van-icon name="" :info="orders.length?orders.length:''" class="info"/>
             <ICon beto="bePay" class="beto" />
             <p>待支付</p>
           </li>
-          <li @click="toShowOrder">
+          <li @click="()=>{toShowOrder(2)}">
+            <van-icon name="" :info="gets.length?gets.length:''" class="info"/>
             <ICon beto="beTakeOver" class="beto" />
             <p>待收货</p>
           </li>
-          <li @click="toShowOrder">
+          <li @click="()=>{toShowOrder(3)}">
+            <van-icon name="" :info="rates.length?rates.length:''" class="info"/>
             <ICon beto="beRated" class="beto" />
             <p>待评价</p>
           </li>
-          <li @click="toShowOrder">
+          <li @click="toShowPS">
             <ICon beto="postSale" class="beto" />
             <p>售后/退款</p>
           </li>
         </ul>
       </div>
       <ul>
-        <li class="PS_list">
+        <li class="PS_list" @click="toShowCou">
           <ICon icon="coupon" />
           <span>我的优惠券</span>
           <div class="showOrder">
             <ICon into="into" class="into" />
           </div>
         </li>
-        <li class="PS_list">
+        <li class="PS_list" @click="toShowAdd">
           <ICon icon="address" />
           <span>我的收货地址</span>
           <div class="showOrder">
@@ -78,7 +81,7 @@
         </li>
       </ul>
     </article>
-    <van-button type="danger" size="large" class="loginOut" @click.prevent="loginOut" >退出</van-button>
+    <van-button type="danger" size="large" class="loginOut" @click.prevent="loginOut" v-if="userInfo.username">退出</van-button>
     <p class="PS_version">当前版本1.2.0</p>
   </div>
 </template>
@@ -88,13 +91,27 @@ import ICon from './ICon/ICon'
 import {mapState} from 'vuex'
 import {Dialog} from 'vant'
 export default {
+  data(){
+    return {
+      gets:[],
+      rates:[]
+    }
+  },
   components: {
     ICon
   },
   methods:{
-    toShowOrder(){
-      console.log(this.$router)
-      this.$router.push('/personal/order')
+    toShowOrder(index){
+      this.$router.push(`/personal/order/${index}`)
+    },
+    toShowCou(){
+      this.$router.push('/personal/coupon')
+    },
+    toShowAdd(){
+      this.$router.push('/personal/address')
+    },
+    toShowPS(){
+      this.$router.push('/personal/postsale')
     },
     loginOut(){
       Dialog.confirm({
@@ -105,13 +122,13 @@ export default {
         this.$router.replace('/login')
       }).catch(() => {
         // on cancel
-      });
+      })
     }
   },
   computed: {
-    
     ...mapState({
-      userInfo:state=>state.Login.userInfo
+      userInfo:state=>state.Login.userInfo,
+      orders:state=>state.order.orders
     })
   }
 }
@@ -134,6 +151,11 @@ export default {
       li
         width 25%
         text-align center
+        position relative
+        .info
+          position absolute
+          top 0
+          right 30px
         p
           margin-top 6px
           font-size 14px
@@ -194,5 +216,4 @@ export default {
     font-size 12px
     color #555
     text-align center
-    margin-top 20px
 </style>

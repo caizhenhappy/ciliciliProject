@@ -10,6 +10,8 @@ import getters from './getters.js'
 
 //引入模块
 import Login from './modules/Login.js'
+import cart from './modules/cart.js'
+import order from './modules/order.js'
 
 //暴露
 export default new Vuex.Store({
@@ -18,6 +20,8 @@ export default new Vuex.Store({
   actions,
   getters,
   modules:{
-    Login
+    Login,
+    cart,
+    order
   }
 })
