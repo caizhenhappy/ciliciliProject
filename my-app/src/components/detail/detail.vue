@@ -64,29 +64,49 @@
         </div>
       </div>
       <button
+        @click="addCart(detailShop)"
         data-v-091be844=""
         class="van-button van-button--warning van-button--large van-button--square van-goods-action-button van-goods-action-button--first van-goods-action-button--last van-goods-action-button--warning"
       >
         <span class="van-button__text">加入购物车</span>
       </button>
     </div>
+    <van-popup v-model="show" class="success">添加成功</van-popup>
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
-import { NavBar, Tabbar, TabbarItem, Button } from "vant";
+import { NavBar, Tabbar, TabbarItem, Button, Popup } from "vant";
+
+import { ADD_CART } from "../../store/mutation-type";
 
 export default {
   name: "FoodDetail",
   data() {
     return {
       detailShop: {},
-      value: 3
+      value: 3,
+      show: false
     };
   },
   methods: {
-    goDiscuss() {
-      // this.$router.push('/category/discuss')
+    //添加商品
+    addCart(cart) {
+      //  console.log(cart);
+      const newCart = {
+        name: cart.name,
+        id: cart.id,
+        price: cart.price,
+        weight: cart.stock_number,
+        imageUrl: cart.small_image,
+        isSelect: true
+      };
+      if (newCart.name) {
+      0
+        
+        this.$store.commit(ADD_CART, newCart);
+        this.show = true;
+      }
     },
 
     onClickLeft() {
@@ -105,8 +125,8 @@ export default {
       }
     }
   },
-  destroyed(){
-    this.destroyed={}
+  destroyed() {
+    this.destroyed = {};
   }
 };
 </script>
@@ -124,7 +144,7 @@ export default {
       margin-right 60px
       font-size 20px
   .headerImage
-    padding-top 50px 
+    padding-top 50px
     width 100%
     height 40%
     img
@@ -185,4 +205,13 @@ export default {
     .f_btn
       background red
       width 100%
+  .success
+    width 30%
+    height 35px
+    background 	#FFB6C1
+    font-size 20px
+    text-align center
+    line-height 35px
+    border-radius 5px
+    opacity .6
 </style>

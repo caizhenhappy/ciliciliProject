@@ -3,7 +3,7 @@
     <ul class="foodList">
       <li
         class="foodItem"
-        v-for="(product,index) in products"
+        v-for="(product, index) in products"
         :key="index"
         @click="goFoodDetail(product.id)"
       >
@@ -21,15 +21,15 @@
 </template>
 <script>
 // 引入Bscroll
-import BScroll from 'better-scroll'
+import BScroll from "better-scroll";
 // 引入接口
-import { reqFoodList } from '../../api/index'
+import { reqFoodList } from "../../api/index";
 export default {
-  name: 'FoodList',
+  name: "FoodList",
   data() {
     return {
       /*  products:[] */
-    }
+    };
   },
   props: {
     products: {
@@ -40,24 +40,24 @@ export default {
   },
   async mounted() {
     // 初始化滑动对象
-    this._initBScroll()
+    this._initBScroll();
   },
   methods: {
     _initBScroll() {
       // 实例化 滑动对象
-      this.rightscroll = new BScroll('.foodWrapper', {
+      this.rightscroll = new BScroll(".foodWrapper", {
         click: true,
         // 1 非实时
         // 2 实时的
         // 3 实时的  惯性,编码的设置
         probeType: 1
-      })
+      });
     },
     goFoodDetail(id) {
-      this.$router.push(`/detail/${id}`)
+      this.$router.push(`/detail/${id}`);
     }
   }
-}
+};
 </script>
 <style scoped>
 .foodWrapper {
@@ -70,5 +70,13 @@ export default {
 .foodItem {
   width: 100%;
   margin: 5px 0px;
+}
+.van-card__title {
+  width: 80%;
+  line-height: 50px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 </style>

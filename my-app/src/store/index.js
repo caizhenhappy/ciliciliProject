@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import cart from './modules/cart'
 import { reqHomeTab } from "../api/index"
+
 
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     //详细些数据
-    shop:{}
+    shop: {}
   },
   mutations: {
     "changshop"(state, shop) {
@@ -15,9 +17,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
-   async getShop({ commit }) {
-    const result =  await reqHomeTab()
-    commit('changshop',result.data.data.cate[0].products)
+    async getShop({ commit }) {
+      const result = await reqHomeTab()
+      commit('changshop', result.data.data.cate[0].products)
     }
+  }, modules: {
+    cart
   }
 })

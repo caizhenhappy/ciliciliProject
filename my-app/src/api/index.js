@@ -7,3 +7,8 @@ export const reqFeature = () => ajax('/featrue')
 export const reqHomeTab = () => ajax('/homeTab')
 //h获取分类
 export const reqCategory = () =>ajax("/category")
+
+export const reqFlashFood = () => ajax('/flashFood')
+
+
+export const reqHomeHeaderTop = () => ajax('/navItem')

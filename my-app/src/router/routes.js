@@ -2,6 +2,8 @@ import Home from '../components/home/home'
 import Category from '../components/Category/Category'
 import Detail from '../components/detail/detail.vue'
 
+
+
 export default [
   {
     path: '/home',
@@ -26,16 +28,4 @@ export default [
     path: '/',
     redirect: '/home',
   }
-  // {
-  //   path:"/eat",
-  //   component:Eat
-  // },
-  // {
-  //   path:"/shop",
-  //   component:Shop
-  // },
-  // {
-  //   path:"/myself",
-  //   component:Myself
-  // }
 ]

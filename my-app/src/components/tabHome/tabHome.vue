@@ -11,7 +11,7 @@
       title-active-color="#28BE57"
       animated:yes
     >
-      <van-tab title="全部" >
+      <van-tab title="全部">
         <ul class="shoplist">
           <li v-for="(shop, index) in shops" :key="index">
             <Shop :shop="shop" />
@@ -47,7 +47,7 @@ import { Tab, Tabs } from "vant";
 //单个菜单组件
 import Shop from "./shop/shop";
 import { reqHomeTab } from "../../api/index";
-import BScroll from "better-scroll";
+
 export default {
   //VAN的TAB配置，m默认选中小标为0 的
   data() {
@@ -62,12 +62,12 @@ export default {
     Shop: Shop
   },
   async mounted() {
-
     const result = await reqHomeTab();
     const shops = result.data.data.cate[0].products;
     this.shops = shops;
+    //this.initScroll();
   }
-};
+}
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 #tabbarItem

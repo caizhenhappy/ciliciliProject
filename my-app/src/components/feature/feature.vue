@@ -68,6 +68,8 @@ export default {
     //请求特色专区的数据，通过mock
     const result = await reqFeature();
     //item 所有数据的集合
+   
+    
     const item = result.data.special_zone;
     const {
       hotItemList, //十月爆款
