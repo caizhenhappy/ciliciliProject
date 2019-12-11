@@ -17,7 +17,12 @@ window.onload = function () {
   })
 }
 export default {
-  name: 'App'
+  name: 'App',
+  mounted(){
+    // this.$store.dispatch('getShop')
+  //  console.log(this.$store.state.shop);
+    
+  }
 }
 </script>
 

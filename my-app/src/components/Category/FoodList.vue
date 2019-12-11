@@ -1,13 +1,24 @@
 <template>
   <div class="foodWrapper">
     <ul class="foodList">
-      <li class="foodItem" v-for="(product,index) in products" :key="index" @click="goFoodDetail">
-        <van-card
-          :price="product.price"
+      <li
+        class="foodItem"
+        v-for="(product,index) in products"
+        :key="index"
+        @click="goFoodDetail(index)"
+      >
+        <!-- :price="product.price"
           :desc="product.spec"
           :title="product.name"
           :thumb="product.small_image"
           :origin-price="product.origin_price"
+        centered:true-->
+        <van-card
+          :desc="product.spec"
+          :title="product.name"
+          :thumb="product.small_image"
+          :origin-price="product.origin_price"
+          :price="product.price"
           centered:true
         />
       </li>
@@ -23,7 +34,7 @@ export default {
   name: 'FoodList',
   data() {
     return {
-      /* products:[] */
+      /*  products:[] */
     }
   },
   props: {
@@ -36,6 +47,11 @@ export default {
   async mounted() {
     // 初始化滑动对象
     this._initBScroll()
+    /* await this.$store.dispatch('getShop')
+    const pro = this.$store.state.shop
+    const onePro = pro.slice(1,25)
+    console.log(onePro) */
+
     /* const rightResult = await reqFoodList()
     const products = rightResult.data.data.cate[0].products
     this.products = products */

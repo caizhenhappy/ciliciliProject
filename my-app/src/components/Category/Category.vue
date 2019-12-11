@@ -5,14 +5,14 @@
       <div class='recommend'>
         推荐
       </div>
-      <div class="like">
+      <div class="like" >
         猜你喜欢
       </div>
-      <div class="vip">
+      <div class="vip" >
         会员特价
       </div>
     </div>
-    <FoodScroll />
+    <FoodScroll :products="products"/>
   </div>
 </template>
 <script>
@@ -30,12 +30,23 @@ export default {
       value: '',
       activeId: 1,
       activeIndex: 0,
-      category:[]
+      category:[],
+      products:[]
     }
   },
   components: {
     FoodScroll
   },
+  /* async mounted() {
+    // 发送异步请求
+    const leftResult = await reqCategory()
+    //console.log(leftResult);
+    const cates = leftResult.data.cate
+    this.cates = cates
+    await this.$store.dispatch('getShop')
+    const pro = this.$store.state.shop
+    this.products = pro
+  }, */
   /* mounted() {
     // 发送异步请求
     // 初始化滑动对象

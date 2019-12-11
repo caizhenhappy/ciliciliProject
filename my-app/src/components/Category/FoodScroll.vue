@@ -3,7 +3,7 @@
     <div class="goods">
       <div class="menu-wrapper">
         <ul>
-          <li class="menu-item" v-for="(cate,index) in cates" :key="index" @click="foodsList">
+          <li class="menu-item" v-for="(cate,index) in cates" :key="index" @click="foodsList(index)">
             <span class="text bottom-border-1px">{{cate.name}}</span>
           </li>
         </ul>
@@ -36,17 +36,17 @@ export default {
     // 初始化滑动对象
     this._initBScroll()
     const leftResult = await reqCategory()
+    //console.log(leftResult);
     const cates = leftResult.data.cate
     this.cates = cates
-
-     
-   
+    await this.$store.dispatch('getShop')
+    const pro = this.$store.state.shop
+    this.products = pro
   },
   methods: {
     //初始化滑动对象
     _initBScroll() {
       // 实例化左侧滑动BScroll对象
-
       this.leftscroll = new BScroll('.menu-wrapper', {
         click: true
       })
@@ -61,11 +61,24 @@ export default {
       }) */
       // 纵向滑动的时候获取y滑动的值
     },
-    async foodsList(){
+    async foodsList(index){
       // 获取相应分类的食物
-    const rightResult = await reqFoodList()
-    const products = rightResult.data.data.cate[0].products
-    this.products = products
+    // const rightResult = await reqFoodList()
+    // const products = rightResult.data.data.cate[0].products
+    // this.products = products
+      const pro = this.$store.state.shop
+      if(index%4===0){
+        this.products = pro.slice(1,10) 
+      }
+      else if(index%4===1){
+        this.products = pro.slice(11,20)
+      }
+      else if(index%4===2){
+        this.products = pro.slice(21,30)
+      }
+      else if(index%4===3){
+        this.products = pro.slice(31,40)
+      }
     }
   }
 }
