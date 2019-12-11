@@ -1,162 +1,189 @@
 <template>
-  <div class='fooddetail'>
-    <div class="header">
-      <van-icon name="arrow-left" @click="goback"/>
+  <div class="detail">
+    <van-nav-bar
+      title="商品详情"
+      left-text=""
+      right-text=""
+      left-arrow
+      fixed
+      @click-left="onClickLeft"
+    />
+    <div class="headerImage">
+      <img :src="detailShop.small_image" alt="" />
     </div>
-    <van-swipe :autoplay="3000" >
-      <!-- <van-swipe-item v-for="(image, index) in images" :key="index">
-      </van-swipe-item> -->
-      <van-swipe-item>
-        <img src="" alt="">
-      </van-swipe-item>
-      <van-swipe-item>
-        <img src="" alt="">
-      </van-swipe-item>
-      <van-swipe-item>
-        <img src="" alt="">
-      </van-swipe-item>
-      <van-swipe-item>
-        <img src="" alt="">
-      </van-swipe-item>
-    </van-swipe>
-    <div class="detail">
-      <h2 class="title">阳江鲜活白贝(20-30头)500g</h2>
-      <p class='detail-text'>口味鲜咸,自然风味~</p>
-      <span class='new'>$9.90</span>
-      <span class='old'>$10.08</span>
-      <div class='small'>
-        <span class='time'>最快半小时内送达</span>
-        <span>称重退差价</span>
-        <i></i>
-      </div>
-    </div>
-    <div class="discuss">
-      <h2>评价</h2>
-      <ul class='dicussDetial'>
-        <li class="dicussDetialItem">
-          <img src="https://picsum.photos/id/4/45/45" alt="">
-          <div class="right">
-            <span>冉冉升起的希望之星</span>
-            <van-rate v-model="value" />
-            <p class='dicussText'>
-              从来没有买过这么干净又鲜活的扇贝,连壳都是干净的,没有杂质,装的水送到家的!
-            </p>
-          </div>
+    <div class="de_main">
+      <ul class="de_shop">
+        <li>
+          <p>{{ detailShop.product_name }}</p>
+          <p class="hei">{{ detailShop.spec }}</p>
+          <p class="jiage">
+            <span class="new">{{ detailShop.price }}</span>
+            <span class="old">{{ detailShop.origin_price }} </span>
+          </p>
         </li>
-        <van-button round type="info" size='small' @click="goDiscuss">查看更多</van-button>
+        <li>此商品按500g/份计价,如实收少于500g将退还差价</li>
+        <li>最快29分钟内送达</li>
       </ul>
+      <ul class="gg">
+        <li>
+          <h3>规格</h3>
+        </li>
+        <li>
+          <span>保持环境</span>
+          <span>冷藏</span>
+        </li>
+        <li>
+          <span>保持环境</span>
+          <span>冷藏</span>
+        </li>
+      </ul>
+      <p></p>
     </div>
-    
+    <div class="headerImage">
+      <img :src="detailShop.small_image" alt="" />
+    </div>
+    <div class="footer_img">
+      <img
+        src="https://img.ddimg.mobi/3f280ff77ab3d1571213379189.jpg?width=750&height=1869"
+        alt=""
+      />
+    </div>
+    <div
+      data-v-091be844=""
+      class="van-goods-action van-goods-action--safe-area-inset-bottom"
+      style="z-index: 100;"
+    >
+      <div
+        data-v-091be844=""
+        role="button"
+        tabindex="0"
+        class="van-goods-action-icon"
+      >
+        <div class="van-icon van-icon-cart-o van-goods-action-icon__icon">
+          <!---->
+        </div>
+      </div>
+      <button
+        data-v-091be844=""
+        class="van-button van-button--warning van-button--large van-button--square van-goods-action-button van-goods-action-button--first van-goods-action-button--last van-goods-action-button--warning"
+      >
+        <span class="van-button__text">加入购物车</span>
+      </button>
+    </div>
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
+import { NavBar, Tabbar, TabbarItem, Button } from "vant";
+
 export default {
-  name:'FoodDetail',
+  name: "FoodDetail",
   data() {
     return {
-      value: 3,
-      images: [
-        // '../../images/my/1.jpg',
-        // '../../images/my/2.jpg',
-        // '../../images/my/3.jpg',
-        // '../../images/my/4.jpg'
-      ]
-    }
+      detailShop: {},
+      value: 3
+    };
   },
   methods: {
-    goback(){
-      console.log(this);
-      
-      this.$router.back()
-    },
-    goDiscuss(){
+    goDiscuss() {
       // this.$router.push('/category/discuss')
+    },
+
+    onClickLeft() {
+      this.$router.back();
     }
   },
-  mounted(){
-
-   
+  mounted() {
+    //获取所有的数据
+    const shop = this.$store.state.shop;
+    //获取路由传过来的id
+    const id = this.$route.params.id;
+    if (shop && id) {
+      const detailShop = shop.find((item, index) => item.id === id);
+      console.log(detailShop);
+      if (detailShop) {
+        this.detailShop = detailShop;
+      }
+    }
+  },
+  destroyed(){
+    this.destroyed={}
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-.fooddetail
+.detail
   width 100%
   height 100%
-  .van-icon-arrow-left
-    font-size 35px
-    position fixed
-    left 0
-    top 5px
-    z-index 99
-    color #666
-  .van-swipe
+  .de_header
+    width 70%
+    line-height 50px
+    display flex
+    justify-content space-around
+    .van-icon-arrow-left
+      margin-top 15px
+      margin-right 60px
+      font-size 20px
+  .headerImage
+    padding-top 50px 
     width 100%
-    height 200px !important
-    .van-swipe__track
+    height 40%
+    img
       width 100%
-      height 200px
-      img
-        height 100%
+      height 100%
+  .de_main
+    width 100%
+    // height 100%
+    border-top 0.0625rem solid 	#F5F5F5
+    .de_shop
+      background-color: #fff;
+      padding: .5rem;
+      li
         width 100%
-  .detail
-    width 100%
-    margin 30px 0px 0 
-    padding 5px
-    box-sizing border-box
-    .title
-      font-size 18px
-      font-weight 700
-      margin 10px 0
-    .detail-text
-      font-size 14px
-      color #666
-      padding 10px 0
-    .new
-      padding 10px 0
-      color red
-      font-size 16px
-    .old
-      color #666
-      font-size 12px
-      margin 0 4px
-    .small
-      margin 10px 0
-      font-size 12px
-      color #666
-      span 
-        margin 4px 2px
-  .discuss
-    margin 30px 5px
-    .van-button
-      background-color #ffffff
-      color #666
-      font-size 16px
-    h2
-      font-size 18px
-      margin 10px 0px
-    .dicussDetial
+        border-bottom 0.1rem solid #f5f5f5
+        &:nth-child(1)
+          padding 10px 0
+          font-size 0.825rem
+          line-height 23px
+          .hei
+            color #A9A9A9
+          .jiage
+            .new
+              color red
+            .old
+              color #A9A9A9
+              margin-left 0.36rem
+        &:nth-child(2)
+          line-height 35px
+          color grey
+          font-size 0.825rem
+        &:nth-child(3)
+          line-height 35px
+          font-size 0.825rem
+          color grey
+    .gg
       width 100%
-      display flex
-      flex-direction column
-      .dicussDetialItem
-        margin 15px 15px
-        border-bottom 1px solid #ccc
-        display flex
-        text-align middle
-        img 
-          width 45px
-          height 45px
-          border-radius 50%
-        .right
-          margin 0 10px
-          span 
-            font-size 14px
-            display block
-            margin 10px 0
-        .dicussText   
-          width 100%
+      border-top 15px solid 	#F5F5F5
+      border-bottom  15px solid 	#F5F5F5
+      li
+        padding 0 10px
+        line-height 45px
+        border-bottom 0.1rem solid #f5f5f5
+        color #A9A9A9
+        font-size 0.7rem
+        h3
           font-size 16px
-          margin 20px 0
-          line-height 20px 
+          color black
+  .footer_img
+    width 100%
+    border-top 0.125rem solid 	#F5F5F5
+    img
+      width 100%
+  .footer_buttom
+    width 100%
+    van-tabbar-item
+    width 100%
+    .f_btn
+      background red
+      width 100%
 </style>

@@ -8,8 +8,9 @@ export default [
     component:Category
   },
   {
-    path:'/category/foodDetail',
-    component:FoodDetail
+    path:'/category/foodDetail/:id',
+    component:FoodDetail,
+    props: (route) => ({ id: route.params.id })
   },
   {
     path:'/category/discuss',

@@ -5,7 +5,7 @@
         class="foodItem"
         v-for="(product,index) in products"
         :key="index"
-        @click="goFoodDetail(index)"
+        @click="goFoodDetail(product.id)"
       >
         <!-- :price="product.price"
           :desc="product.spec"
@@ -68,8 +68,8 @@ export default {
         probeType: 1
       })
     },
-    goFoodDetail() {
-      this.$router.push('/category/foodDetail')
+    goFoodDetail(id) {
+      this.$router.push(`/category/foodDetail/${id}`)
     }
   }
 }
