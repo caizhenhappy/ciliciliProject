@@ -16,7 +16,7 @@
     "better-scroll": "^1.15.2",
     "express": "^4.17.1",
     "fastclick": "^1.0.6",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "koa": "^2.11.0",
     "koa-router": "^7.4.0",
     "mockjs": "^1.1.0",
